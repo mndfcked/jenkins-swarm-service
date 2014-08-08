@@ -26,14 +26,14 @@
 # include Windows::Helper from Opscode Windows Cookbook
 ::Chef::Recipe.send(:include, Windows::Helper)
 
-setup_zip      = ::File.basename("jenkins-swarm-service.zip")
-setup_zip_temp_path = win_friendly_path(File.join(Dir.tmpdir(), setup_zip))
-swarm_install_path = "c:/jenkins-swarm" 
-setup_log_path = win_friendly_path(File.join(Dir.tmpdir(), "#{setup_zip}.html"))
-service_install_batch_file = win_friendly_path(File.join(swarm_install_path), "bat/installService.bat")
+setup_zip = ::File.basename("jenkins-swarm-service.zip")
+setup_zip_temp_path = win_friendly_path(File.join(Dir.tmpdir(), ::File.basename(setup_zip, "zip")))
+swarm_install_path = win_friendly_path(File.join("#{ENV['systemdrive']}", ::File.basename(setup_zip, "zip"))
+setup_log_path = win_friendly_path(File.join(Dir.tmpdir(), "#{setup_zip}.log"))
+service_install_batch_file = win_friendly_path(File.join(swarm_install_path, "bat", "installService.bat"))
 
 cookbook_file setup_zip_temp_path do
-	source "jenkins-swarm-service.zip"
+	source setup_zip
 	mode "0644"
 end
 
@@ -44,5 +44,5 @@ end
 
 execute "Install service" do 
 	command service_install_batch_file
-	creates "e:/logs/service_install.log"
+	creates setup_log_path
 end
