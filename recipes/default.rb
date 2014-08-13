@@ -27,8 +27,9 @@
 ::Chef::Recipe.send(:include, Windows::Helper)
 
 setup_zip = ::File.basename("jenkins-swarm-service.zip")
-setup_zip_temp_path = win_friendly_path(File.join(Dir.tmpdir(), ::File.basename(setup_zip, "zip")))
-swarm_install_path = win_friendly_path(File.join("#{ENV['systemdrive']}", ::File.basename(setup_zip, "zip"))
+setup_zip_basename = ::File.basename(setup_zip, ".zip");
+setup_zip_temp_path = win_friendly_path(File.join(Dir.tmpdir(), setup_zip_basename))
+swarm_install_path = win_friendly_path(File.join("#{ENV['systemdrive']}", setup_zip_basename))
 setup_log_path = win_friendly_path(File.join(Dir.tmpdir(), "#{setup_zip}.log"))
 service_install_batch_file = win_friendly_path(File.join(swarm_install_path, "bat", "installService.bat"))
 
