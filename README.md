@@ -5,6 +5,7 @@ Installs the Jenkins-CI Swarm Plugin client as a windows service.
 # Requirements
 
 * Windows cookbook
+* Java cookbook
 * Tested on Windows 7, may also work on other versions.
 
 # Usage
