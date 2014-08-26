@@ -18,13 +18,11 @@
 # limitations under the License.
 #
 
-#version        = node['dotnetframework']['version']
-#package_name   = node['dotnetframework'][version]['package_name']
-#url            = node['dotnetframework'][version]['url']
-#checksum       = node['dotnetframework'][version]['checksum']
-
 # include Windows::Helper from Opscode Windows Cookbook
 ::Chef::Recipe.send(:include, Windows::Helper)
+::Chef::Recipe.send(:include, JenkinsSwarmService::Helper)
+
+service_is_installed = is_installed?()
 
 setup_zip = ::File.basename("jenkins-swarm-service.zip")
 setup_zip_basename = ::File.basename(setup_zip, ".zip");
@@ -36,14 +34,17 @@ service_install_batch_file = win_friendly_path(File.join(swarm_install_path, "ba
 cookbook_file setup_zip_temp_path do
 	source setup_zip
 	mode "0644"
+	not_if { service_is_installed }
 end
 
 windows_zipfile swarm_install_path do
 	source setup_zip_temp_path
 	action :unzip
+	not_if { service_is_installed }
 end
 
 execute "Install service" do 
 	command service_install_batch_file
 	creates setup_log_path
+	not_if { service_is_installed }
 end
