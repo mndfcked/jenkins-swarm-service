@@ -28,6 +28,7 @@ setup_zip = ::File.basename("jenkins-swarm-service.zip")
 setup_zip_basename = ::File.basename(setup_zip, ".zip");
 setup_zip_temp_path = win_friendly_path(File.join(Dir.tmpdir(), setup_zip_basename))
 swarm_install_path = win_friendly_path(File.join("#{ENV['systemdrive']}", setup_zip_basename))
+swarm_config_file = win_friendly_path(File.join("config", "wrapper.confg"))
 setup_log_path = win_friendly_path(File.join(Dir.tmpdir(), "#{setup_zip}.log"))
 service_install_batch_file = win_friendly_path(File.join(swarm_install_path, "bat", "installService.bat"))
 
@@ -41,6 +42,19 @@ windows_zipfile swarm_install_path do
 	source setup_zip_temp_path
 	action :unzip
 	not_if { service_is_installed }
+end
+
+template "swarm_config_file" do
+	:auto_discovery_addressnode => node['jenkinsswarmservice']['parameters']['auto_discovery_address']
+	:disable_ssl_verification => node['jenkinsswarmservice']['parameters']['disable_ssl_verification']
+	:executors => node['jenkinsswarmservice']['parameters']['executors']
+	:fs_root => node['jenkinsswarmservice']['parameters']['fs_root']
+	:labels => node['jenkinsswarmservice']['parameters']['labels']
+	:master => node['jenkinsswarmservice']['parameters']['master']
+	:mode => node['jenkinsswarmservice']['parameters']['mode']
+	:name => node['jenkinsswarmservice']['parameters']['name']
+	:password => node['jenkinsswarmservice']['parameters']['password']
+	:username => node['jenkinsswarmservice']['parameters']['username']
 end
 
 execute "Install service" do 

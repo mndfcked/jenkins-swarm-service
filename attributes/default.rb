@@ -18,4 +18,17 @@
 # limitations under the License.
 #
 
+# Swarm service installation settings
 default['jenkinsswarmservice']['install_path'] = 'C:\jenkins-swarm-service'
+
+# Jenkins Swarm client configuration parameter
+default['jenkinsswarmservice']['parameters']['auto_discovery_address'] = ''
+default['jenkinsswarmservice']['parameters']['disable_ssl_verification'] = ''
+default['jenkinsswarmservice']['parameters']['executors'] = ''
+default['jenkinsswarmservice']['parameters']['fs_root'] = ''
+default['jenkinsswarmservice']['parameters']['labels'] = []
+default['jenkinsswarmservice']['parameters']['master'] = ''
+default['jenkinsswarmservice']['parameters']['mode'] = ''
+default['jenkinsswarmservice']['parameters']['name'] = ''
+default['jenkinsswarmservice']['parameters']['password'] = ''
+default['jenkinsswarmservice']['parameters']['username'] = ''
