@@ -1,23 +1,55 @@
 <%= render "orig_wrapper.conf.erb" %>
-wrapper.app.parameter.1 = -autoDiscoveryAddress
-wrapper.app.parameter.2 = <%= @auto_discovery_addressnode %>
-wrapper.app.parameter.3 = -description
-wrapper.app.parameter.4 = <%= @description %>
-wrapper.app.parameter.5 = -disableSslVerification
-wrapper.app.parameter.6 = <%= @disable_ssl_verification %>
-wrapper.app.parameter.7 = -executors
-wrapper.app.parameter.8 = <%= @executors %>
-wrapper.app.parameter.9 = -fsroot
-wrapper.app.parameter.10 = <%= @fs_root %>
-wrapper.app.parameter.11 = -master
-wrapper.app.parameter.12 = <%= @master %>
-wrapper.app.parameter.13 = -mode
-wrapper.app.parameter.14= <%= @mode %>
-wrapper.app.parameter.15 = -name
-wrapper.app.parameter.16= <%= @name %>
-wrapper.app.parameter.17 = -password
-wrapper.app.parameter.18 = <%= @password %>
-wrapper.app.parameter.19 = -username
-wrapper.app.parameter.20 = <%= @password %>
-wrapper.app.parameter.21 = -labels
-wrapper.app.parameter.22 = <%= @labels %>
+<% if !@auto_discovery_addressnode.nil? && !@auto_discovery_addressnode.empty? %>
+<%= "wrapper.app.parameter.1 = -autoDiscoveryAddress" %>
+<%= "wrapper.app.parameter.2 = #{@auto_discovery_addressnode}" %>
+<% end %>
+
+<% if !@description.nil? && !@description.empty? %>
+<%= "wrapper.app.parameter.3 = -description" %>
+<%= "wrapper.app.parameter.4 = #{@description}" %>
+<% end %>
+
+<% if !@disable_ssl_verification.nil? && !@disable_ssl_verification.empty? %>
+<%= "wrapper.app.parameter.5 = -disableSslVerification" %>
+<%= "wrapper.app.parameter.6 = #{@disable_ssl_verification}" %>
+<% end %>
+
+<% if !@executors.nil? %>
+<%= "wrapper.app.parameter.7 = -executors" %>
+<%= "wrapper.app.parameter.8 = #{@executors}" %>
+<% end %>
+
+<% if !@fs_root.nil? && !@fs_root.empty? %>
+<%= "wrapper.app.parameter.9 = -fsroot" %>
+<%= "wrapper.app.parameter.10 = #{@fs_root}" %>
+<% end %>
+
+<% if !@master.nil? && !@master.empty? %>
+<%= "wrapper.app.parameter.11 = -master" %>
+<%= "wrapper.app.parameter.12 = #{@master}" %>
+<% end %>
+
+<% if !@mode.nil? && !@mode.empty? %>
+<%= "wrapper.app.parameter.13 = -mode" %>
+<%= "wrapper.app.parameter.14 = #{@mode}" %>
+<% end %>
+
+<% if !@name.nil? && !@name.empty? %>
+<%= "wrapper.app.parameter.15 = -name" %>
+<%= "wrapper.app.parameter.16 = #{@name}" %>
+<% end %>
+
+<% if !@password.nil? && !@password.empty? %>
+<%= "wrapper.app.parameter.17 = -password" %>
+<%= "wrapper.app.parameter.18 = #{@password}" %>
+<% end %>
+
+<% if !@username.nil? && !@username.empty? %>
+<%= "wrapper.app.parameter.19 = -username" %>
+<%= "wrapper.app.parameter.20 = #{@username}" %>
+<% end %>
+
+<% if !@labels.nil? && !@labels.empty? %>
+<%= "wrapper.app.parameter.21 = -labels" %>
+<%= "wrapper.app.parameter.22 = #{@labels}" %>
+<% end %>

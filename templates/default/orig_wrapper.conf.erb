@@ -25,7 +25,7 @@
 #********************************************************************
 # working directory
 #********************************************************************
-wrapper.working.dir=<%= @install_path %>
+wrapper.working.dir=C:\\Windows\\Temp
 
 # Java Main class.  
 # YAJSW: default is "org.rzo.yajsw.app.WrapperJVMMain" 
@@ -179,7 +179,7 @@ wrapper.ntservice.description=jenkins-swarm
 # wrapper.ntservice.dependency.1=
 
 # Mode in which the service is installed.  AUTO_START or DEMAND_START
-# wrapper.ntservice.starttype=AUTO_START
+wrapper.ntservice.starttype=AUTO_START
 
 # Allow the service to interact with the desktop.
 # wrapper.ntservice.interactive=false
@@ -213,11 +213,11 @@ wrapper.daemon.run_level_dir=${if (new File('\/etc\/rc0.d').exists()) return '\/
 # Wrapper System Tray Properties
 #********************************************************************
 # enable system tray
-wrapper.tray = true
+wrapper.tray = false
 
 # TCP/IP port. If none is defined multicast discovery is used to find the port
 # Set the port in case multicast is not possible.
-wrapper.tray.port = 15002
+# wrapper.tray.port = 15002
 
 # icon file to use, per default a console icon is used
 #wrapper.tray.icon=
@@ -226,7 +226,7 @@ wrapper.tray.port = 15002
 # Exit Code Properties
 # Restart on non zero exit code
 #********************************************************************
-wrapper.on_exit.0=SHUTDOWN
+wrapper.on_exit.0=RESTART
 wrapper.on_exit.default=RESTART
 
 #********************************************************************
