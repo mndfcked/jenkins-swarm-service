@@ -19,7 +19,7 @@
 #
 
 # Swarm service installation settings
-default['jenkinsswarmservice']['install_path'] = 'C:\\jenkins-swarm-service'
+default['jenkinsswarmservice']['install_path'] = 'C:\\\\jenkins-swarm-service'
 default['jenkinsswarmservice']['url'] = 'http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/1.16/swarm-client-1.16-jar-with-dependencies.jar'
 default['jenkinsswarmservice']['service_user']
 default['jenkinsswarmservice']['service_user_password']  
@@ -28,7 +28,7 @@ default['jenkinsswarmservice']['service_user_password']
 # Jenkins Swarm client configuration parameter
 default['jenkinsswarmservice']['parameters']['auto_discovery_address']
 default['jenkinsswarmservice']['parameters']['disable_ssl_verification']
-default['jenkinsswarmservice']['parameters']['executors']
+default['jenkinsswarmservice']['parameters']['executors'] = 1
 default['jenkinsswarmservice']['parameters']['fs_root']
 default['jenkinsswarmservice']['parameters']['labels']
 default['jenkinsswarmservice']['parameters']['master']
