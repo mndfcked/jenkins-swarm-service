@@ -1,4 +1,10 @@
 <%= render "orig_wrapper.conf.erb" %>
+<%= "wrapper.app.account=#{@service_user}" %>
+<%= "wrapper.app.password=#{@service_user_password}" %>
+
+<%= "wrapper.java.app.jar=#{@jar_file}" %>
+<%= "wrapper.java.command=java" %>
+
 <% if !@auto_discovery_addressnode.nil? && !@auto_discovery_addressnode.empty? %>
 <%= "wrapper.app.parameter.1 = -autoDiscoveryAddress" %>
 <%= "wrapper.app.parameter.2 = #{@auto_discovery_addressnode}" %>
